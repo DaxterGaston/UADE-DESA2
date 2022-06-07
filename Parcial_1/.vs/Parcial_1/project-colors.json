@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "65100865-0e4e-308e-a8ae-fdd35f287b58": {
+      "ProjectGuid": "65100865-0e4e-308e-a8ae-fdd35f287b58",
+      "DisplayName": "Assembly-CSharp",
+      "ColorIndex": 0
+    },
+    "14bb3839-8baf-b607-5a65-f59f88e1a54a": {
+      "ProjectGuid": "14bb3839-8baf-b607-5a65-f59f88e1a54a",
+      "DisplayName": "Assembly-CSharp-Editor",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "e6979838-e453-c5be-c1de-0b2020187421": {
+      "ProjectGuid": "e6979838-e453-c5be-c1de-0b2020187421",
+      "DisplayName": "Unity.Platformer.Tutorials",
+      "ColorIndex": 2
+    },
+    "65081065-4e0e-8e30-a8ae-fdd35f287b58": {
+      "ProjectGuid": "65081065-4e0e-8e30-a8ae-fdd35f287b58",
+      "DisplayName": "Assembly-CSharp",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
