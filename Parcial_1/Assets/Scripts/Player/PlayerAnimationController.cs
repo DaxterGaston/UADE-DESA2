@@ -43,7 +43,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void UpdateAnimations()
     {
-        //animator.SetBool("Walking", rb.velocity.magnitude > 0.1f);
+        animator.SetBool("Walking", h != 0);
         animator.SetFloat("X", h);
         if (_pc.Left)
             scale.x = Mathf.Abs(scale.x);
