@@ -76,7 +76,7 @@ namespace Assets.Scripts.DP.Factory
         public void NotifyAll(string message, params object[] args)
         {
             foreach (var subscriber in _subscribers)
-                subscriber.OnNotify(message, args);
+                subscriber?.OnNotify(message, args);
         }
     }
 }

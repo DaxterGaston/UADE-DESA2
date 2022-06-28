@@ -54,7 +54,9 @@ public class HealthController : MonoBehaviour, IHealth, IObservable
     public void NotifyAll(string message, params object[] args)
     {
         foreach (var subscriber in _subscribers)
-            subscriber.OnNotify(message, args);
+        {
+            subscriber?.OnNotify(message, args);
+        }
     }
 
     #endregion

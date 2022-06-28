@@ -29,6 +29,8 @@ namespace Assets.Scripts.DP.Prototype
         private TimeSpan _ts;
 
         private bool _left;
+
+        private bool _dead;
         
         MoveCommand _moveLeft;
         MoveCommand _moveRight;
@@ -41,6 +43,8 @@ namespace Assets.Scripts.DP.Prototype
         private IFactory<BaseBullet, BaseBulletSO> _baseBulletFactory;
         private IPool<BaseBullet> _baseBulletPool;
 
+        public bool IsDead => _dead;
+        
         public GameObject Clone()
         {
             GameObject go = GameObject.Instantiate(gameObject);
@@ -69,7 +73,11 @@ namespace Assets.Scripts.DP.Prototype
         // Update is called once per frame
         void Update()
         {
-            if (_health.Health == 0) Destroy(gameObject);
+            if (_health.Health == 0)
+            {
+                gameObject.SetActive(false);
+                _dead = true;
+            }
             Vector3 _canSee = transform.position;
             _canSee.x += _canSeePlayerRange;
             RaycastHit2D seen = Physics2D.Raycast(transform.position, transform.right, _canSeePlayerRange, _player);
