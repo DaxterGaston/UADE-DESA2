@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
+    public delegate void PlayerEventHandler();
     public class PlayerController : MonoBehaviour
     {
         #region SetUp
@@ -32,7 +33,7 @@ namespace Assets.Scripts.Player
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
-
+        public event PlayerEventHandler OnPlayerDie;
         public bool Grounded { get; private set; }
         public bool Left { get; private set; }
 
@@ -41,6 +42,7 @@ namespace Assets.Scripts.Player
         private IPool<BaseBullet> _bullets;
         private HealthController _playerHealth;
         private GUIController _GUIObserver;
+        private bool _dead;
 
         #endregion
 
@@ -58,7 +60,8 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             _playerHealth = GetComponent<HealthController>();
-
+            _dead = false;
+            
             //Move
             _moveLeft = new MoveCommand(transform, new Vector3(-1, 0), _movementSpeed);
             _moveRight = new MoveCommand(transform, new Vector3(1, 0), _movementSpeed);
@@ -81,8 +84,8 @@ namespace Assets.Scripts.Player
         // Update is called once per frame
         private void Update()
         {
-            if (_playerHealth.Health <= 0) SceneManager.LoadScene("SampleScene");
-            if (transform.position.y < -30) Die();
+            if (_playerHealth.Health <= 0 && !_dead) Die();
+            if (transform.position.y < -30 && !_dead) Die();
             ManageImputs();
         }
 
@@ -96,6 +99,8 @@ namespace Assets.Scripts.Player
             if (other.gameObject.CompareTag("EnemyBullet"))
             {
                 _playerHealth.Damage(1);
+                var bullet = other.GetComponent<BaseBullet>();
+                bullet.Store();
             } 
             if (other.gameObject.CompareTag("VictoryZone"))
             {
@@ -106,7 +111,8 @@ namespace Assets.Scripts.Player
 
         private void Die()
         {
-            SceneManager.LoadScene("SampleScene");
+            _dead = true;
+            OnPlayerDie?.Invoke();
         }
 
         private void ManageImputs()

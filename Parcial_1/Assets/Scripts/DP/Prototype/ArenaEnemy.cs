@@ -1,0 +1,166 @@
+﻿using Assets.Scripts.Abstractions;
+using Assets.Scripts.Bullets;
+using Assets.Scripts.DP.Factory;
+using System;
+using System.Diagnostics;
+using UnityEngine;
+using UnityEngine.Serialization;
+using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
+
+namespace Assets.Scripts.DP.Prototype
+{
+    public class ArenaEnemy : MonoBehaviour, IPrototype
+    {
+        [SerializeField]
+        private float _movementSpeed;
+        [SerializeField]
+        private Transform _shootPoint;
+        [SerializeField]
+        private BaseBullet _bulletPrefab;
+        [SerializeField]
+        private float _canSeePlayerRange;
+        [SerializeField]
+        private float _canShootPlayerRange;
+        [SerializeField]
+        private LayerMask _playerMask;
+
+        private Vector3 _canSee;
+        private Vector3 _canShoot;
+        private Vector3 _scale;
+
+        private Stopwatch _sw;
+        private TimeSpan _ts;
+
+        private bool _left;
+
+        private bool _dead;
+        
+        MoveCommand _moveLeft;
+        MoveCommand _moveRight;
+        ShootCommand _shootLeft;
+        ShootCommand _shootRight;
+
+        private HealthController _health;
+
+
+        private IFactory<BaseBullet, BaseBulletSO> _baseBulletFactory;
+        private IPool<BaseBullet> _baseBulletPool;
+        public GameObject _player;
+
+        public bool IsDead => _dead;
+        public event EnemyEventHandler OnDead;
+        
+        
+        public GameObject Clone()
+        {
+            GameObject go = GameObject.Instantiate(gameObject);
+            go.SetActive(false);
+            return go;
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+            _moveLeft = new MoveCommand(transform, new Vector3(-1, 0), _movementSpeed);
+            _moveRight = new MoveCommand(transform, new Vector3(1, 0), _movementSpeed);
+
+            _baseBulletFactory = new BulletFactory(_bulletPrefab);
+            _baseBulletPool = new BulletPool<BaseBullet, BaseBulletSO>(_baseBulletFactory, 5);
+            _shootLeft = new ShootCommand(_shootPoint, -1f, _baseBulletPool, 1);
+            _shootRight = new ShootCommand(_shootPoint, 1f, _baseBulletPool, 1);
+
+            _health = GetComponent<HealthController>();
+
+            _sw = new Stopwatch();
+            _ts = new TimeSpan(0, 0, 2);
+            _sw.Start();
+            
+            _scale = transform.localScale;
+            
+            _player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (_health.Health == 0)
+            {
+                Die();
+            }
+            Vector3 _canSee = transform.position;
+            _canSee.x += _canSeePlayerRange;
+            
+            RaycastHit2D seen = Physics2D.Raycast(transform.position, (_player.transform.position-transform.position).normalized, _canSeePlayerRange, _playerMask);
+            if (seen.collider)
+            {
+                if(seen.collider.transform.position.x > transform.position.x) _left = false;
+                else _left = true;
+                RaycastHit2D onShootRange = Physics2D.Raycast(transform.position, _left ? -transform.right: transform.right, _canShootPlayerRange, _playerMask);
+                if (onShootRange)
+                {
+                    if(_sw.Elapsed > _ts)
+                    {
+                        if (Random.value >= 0.75f)
+                        {
+                            if (_left) _shootLeft.Execute();
+                            else _shootRight.Execute();
+                            _sw.Restart();    
+                        }
+                    }
+                }
+                else
+                {
+                    if(_left) _moveLeft.Execute();
+                    else _moveRight.Execute();
+                }
+            }
+            
+            if (_left)
+                _scale.x = Mathf.Abs(_scale.x) * -1;
+            else
+                _scale.x = Mathf.Abs(_scale.x);
+       
+            transform.localScale = _scale;
+        }
+
+        private void OnDrawGizmos()
+        {
+            //Gizmos.DrawLine(transform.position, (Vector2)transform.position + (Vector2)transform.forward);
+            Gizmos.color = Color.magenta;
+            Vector3 _canSee = transform.position;
+            _canSee.x += _canSeePlayerRange;
+            if (_player)
+                Gizmos.DrawLine(transform.position, _player.transform.position);
+
+            Gizmos.color = Color.red;
+            Vector3 _canShoot = transform.position;
+            _canShoot.x += _canShootPlayerRange;
+            Gizmos.DrawLine(transform.position, _canShoot);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Bullet"))
+            {
+                BaseBullet bb = collision.gameObject.GetComponent<BaseBullet>();
+                _health.Damage(bb.Data.damage);
+                bb.Store();
+            }
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
+            _dead = true;
+            OnDead?.Invoke();
+        }
+
+        public void Kill()
+        {
+            gameObject.SetActive(false);
+            _dead = true;
+        }
+
+    }
+}

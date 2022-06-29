@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 3571568398089806123}
   - component: {fileID: 3936701625200368190}
   - component: {fileID: 1857488577643406804}
-  - component: {fileID: 5064509766681499277}
+  - component: {fileID: -6183589701947428246}
   m_Layer: 11
-  m_Name: BlueEnemy
+  m_Name: ArenaEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
---- !u!114 &5064509766681499277
+--- !u!114 &-6183589701947428246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,15 +197,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3571568398089806127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfb2e5bfc42bd641a71ac5cbed532c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b707adfa01e47d5a0bb1376cd1bad6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 2
   _shootPoint: {fileID: 8766650576621631260}
   _bulletPrefab: {fileID: -5119759457265773228, guid: 6f5172ae8031fd84985bf63802f394f5,
     type: 3}
-  _canSeePlayerRange: 2.6
-  _canShootPlayerRange: 1.3
-  _player:
+  _canSeePlayerRange: 100
+  _canShootPlayerRange: 5
+  _playerMask:
     serializedVersion: 2
     m_Bits: 64
+  _player: {fileID: 0}

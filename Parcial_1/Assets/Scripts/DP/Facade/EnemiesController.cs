@@ -9,13 +9,14 @@ public delegate void EnemiesControllerEventHandler();
 
 public class EnemiesController : MonoBehaviour
 {
-    [SerializeField] private List<BaseEnemy> _enemies;
+    [SerializeField] private List<ArenaEnemy> _enemies;
     [SerializeField] private bool _enemySpawnLoop;
     [SerializeField] private List<Transform> _spawnPoints;
-    [SerializeField] private BaseEnemy enemyPrefab;
+    [SerializeField] private ArenaEnemy enemyPrefab;
     [SerializeField] private float _enemySpawnWaitTime;
 
     private float _enemySpawntimer;
+    private int _activeEnemies;
     
     public event EnemiesControllerEventHandler OnAllEnemiesKilled;
     public event EnemiesControllerEventHandler OnEnemyKilled;
@@ -38,7 +39,7 @@ public class EnemiesController : MonoBehaviour
             SpawnNewEnemy();
             _enemySpawntimer = _enemySpawnWaitTime;
         }
-        _enemySpawntimer -= _enemySpawnWaitTime;
+        _enemySpawntimer -= Time.deltaTime;
 
 
     }
@@ -57,8 +58,12 @@ public class EnemiesController : MonoBehaviour
         if (_spawnPoints.Count > 0)
         {
             var index= Random.Range(0, _spawnPoints.Count);
-            Instantiate(enemyPrefab, _spawnPoints[index].transform.position, _spawnPoints[index].transform.rotation);
+            var enemy = Instantiate(enemyPrefab, _spawnPoints[index].transform.position, _spawnPoints[index].transform.rotation);
+            enemy.OnDead += EnemyKilled;
+            _enemies.Add(enemy);
         }
+
+        _activeEnemies = _enemies.Count(enemy => !enemy.IsDead);
     }
 
     public void StopSpawning()
@@ -68,6 +73,6 @@ public class EnemiesController : MonoBehaviour
 
     public void KillAllEnemies()
     {
-        _enemies.ForEach((enemy) => enemy.Kill());
+        _enemies.ForEach(enemy => enemy.Kill());
     }
 }
