@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.DP.Prototype
 {
+    public delegate void EnemyEventHandler();
+    
     public class BaseEnemy : MonoBehaviour, IPrototype
     {
         [SerializeField]
@@ -44,6 +46,8 @@ namespace Assets.Scripts.DP.Prototype
         private IPool<BaseBullet> _baseBulletPool;
 
         public bool IsDead => _dead;
+        public event EnemyEventHandler OnDead;
+        
         
         public GameObject Clone()
         {
@@ -75,8 +79,7 @@ namespace Assets.Scripts.DP.Prototype
         {
             if (_health.Health == 0)
             {
-                gameObject.SetActive(false);
-                _dead = true;
+                Die();
             }
             Vector3 _canSee = transform.position;
             _canSee.x += _canSeePlayerRange;
@@ -125,6 +128,18 @@ namespace Assets.Scripts.DP.Prototype
                 _health.Damage(bb.Data.damage);
                 bb.Store();
             }
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
+            _dead = true;
+            OnDead?.Invoke();
+        }
+
+        public void Kill()
+        {
+            Die();
         }
 
     }

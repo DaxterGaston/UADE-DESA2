@@ -39,7 +39,8 @@ public class LevelController : MonoBehaviour, ILevelController, IObserver<LevelS
         if (message == LevelState.WinConditionMet)
         {
             LevelEnd();
-        } else if (message == LevelState.EnteredDoor)
+        } 
+        else if (message == LevelState.EnteredDoor)
         {
             NextLevel();
         }

@@ -1,16 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Assets.Scripts.DP.Prototype;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class KillAllWinCondiition : WinCondition
+public class ArenaWinCondition: WinCondition
 {
     private List<IObserver<LevelState>> _subscribers = new List<IObserver<LevelState>>();
     private bool _winConditionMet;
-
-    [SerializeField] private List<BaseEnemy> _enemies;
+    private int _killCount;
     
+    [SerializeField] private int _winScore;
+    [SerializeField] private EnemiesController _enemiesController;
+
+    public int WinScore => _winScore;
+    public int KillCount => _killCount;
+    
+    private void Start()
+    {
+        _enemiesController.OnEnemyKilled += () =>
+        {
+            _killCount++;
+            CheckWinCondition();
+        };
+        
+    }
+
     public List<IObserver<LevelState>> Subscribers => _subscribers;
     public bool WinConditionMet => _winConditionMet;
 
@@ -34,15 +46,12 @@ public class KillAllWinCondiition : WinCondition
 
     public override void CheckWinCondition()
     {
-        if (_enemies != null && _enemies.Count > 0 && _enemies.All((enemy) => enemy.IsDead))
+        if (_killCount >= _winScore)
         {
             _winConditionMet = true;
-            NotifyAll(LevelState.WinConditionMet);    
+            _enemiesController.StopSpawning();
+            _enemiesController.KillAllEnemies();
+            NotifyAll(LevelState.WinConditionMet);
         }
-    }
-
-    private void Update()
-    {
-        CheckWinCondition();
     }
 }

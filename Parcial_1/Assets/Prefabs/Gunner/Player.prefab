@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623473231345201}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: EnemyStats2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4809623473332220627}
   - component: {fileID: 4809623473332220625}
   - component: {fileID: 4809623473332220624}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: GreenEnemyAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 4809623473335180483}
   - component: {fileID: 4809623473335180481}
   - component: {fileID: 4809623473335180480}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,13 +316,13 @@ GameObject:
   - component: {fileID: 4809623473341615510}
   - component: {fileID: 4809623473341615508}
   - component: {fileID: 4809623473341615511}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: InventoryBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4809623473341615510
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391,13 +391,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623473368472078}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4809623473368472078
 Transform:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623473405640802}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: TitleContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 4809623473408024668}
   - component: {fileID: 4809623473408024674}
   - component: {fileID: 4809623473408024669}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623473436456613}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: DescriptionContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 4809623473567515916}
   - component: {fileID: 4809623473567515922}
   - component: {fileID: 4809623473567515917}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: AmmoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 4809623473617894466}
   - component: {fileID: 4809623473617894333}
   - component: {fileID: 4809623473617894332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 4809623473648558422}
   - component: {fileID: 4809623473648558420}
   - component: {fileID: 4809623473648558423}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: InventoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 4809623473703908471}
   - component: {fileID: 4809623473703908469}
   - component: {fileID: 4809623473703908468}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: EnemyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 4809623473727247694}
   - component: {fileID: 4809623473727247692}
   - component: {fileID: 4809623473727247695}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Star1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 4809623473809556497}
   - component: {fileID: 4809623473809556503}
   - component: {fileID: 4809623473809556502}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: RedEnemyAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 4809623473861810062}
   - component: {fileID: 4809623473861810060}
   - component: {fileID: 4809623473861810063}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemImage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1282,13 +1282,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623474007155936}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ArmorContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4809623474007155936
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 4809623474021897226}
   - component: {fileID: 4809623474021897224}
   - component: {fileID: 4809623474021897227}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: EnemyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 4809623474026205125}
   - component: {fileID: 4809623474026205131}
   - component: {fileID: 4809623474026205130}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ArmorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,13 +1531,13 @@ GameObject:
   - component: {fileID: 4809623474073240054}
   - component: {fileID: 4809623474073240052}
   - component: {fileID: 4809623474073240055}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ObjectiveBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4809623474073240054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 4809623474091201670}
   - component: {fileID: 4809623474091201668}
   - component: {fileID: 4809623474091201671}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Star0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1683,7 +1683,7 @@ GameObject:
   - component: {fileID: 4809623474112673537}
   - component: {fileID: 4809623474112673543}
   - component: {fileID: 4809623474112673542}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 4809623474157678455}
   - component: {fileID: 4809623474157678453}
   - component: {fileID: 4809623474157678452}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1892,7 +1892,7 @@ GameObject:
   - component: {fileID: 4809623474287635254}
   - component: {fileID: 4809623474287635252}
   - component: {fileID: 4809623474287635255}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: EnemyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1968,7 +1968,7 @@ GameObject:
   - component: {fileID: 4809623474350469924}
   - component: {fileID: 4809623474350469930}
   - component: {fileID: 4809623474350469925}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemBox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2044,7 +2044,7 @@ GameObject:
   - component: {fileID: 4809623474356364614}
   - component: {fileID: 4809623474356364612}
   - component: {fileID: 4809623474356364615}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2120,7 +2120,7 @@ GameObject:
   - component: {fileID: 4809623474487442300}
   - component: {fileID: 4809623474487442178}
   - component: {fileID: 4809623474487442301}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: AmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2256,7 +2256,7 @@ GameObject:
   - component: {fileID: 4809623474494439410}
   - component: {fileID: 4809623474494439408}
   - component: {fileID: 4809623474494439411}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: WaveNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2390,13 +2390,13 @@ GameObject:
   - component: {fileID: 4809623474538280024}
   - component: {fileID: 4809623474538280030}
   - component: {fileID: 4809623474538280025}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: WaveDisplayBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4809623474538280024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2468,13 +2468,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4809623474562612137}
   - component: {fileID: 4809623474562612142}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: DirectionalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4809623474562612137
 Transform:
   m_ObjectHideFlags: 0
@@ -2560,7 +2560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623474597301942}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: AmmoContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2599,7 +2599,7 @@ GameObject:
   - component: {fileID: 4809623474602615714}
   - component: {fileID: 4809623474602615712}
   - component: {fileID: 4809623474602615715}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemImage3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2674,7 +2674,7 @@ GameObject:
   - component: {fileID: 4809623474640214711}
   - component: {fileID: 4809623474640214709}
   - component: {fileID: 4809623474640214708}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemImage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2747,7 +2747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623474747644687}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2777,7 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623474750659476}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: HealthContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2816,7 +2816,7 @@ GameObject:
   - component: {fileID: 4809623474771208722}
   - component: {fileID: 4809623474771208720}
   - component: {fileID: 4809623474771208723}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: BlueEnemyAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2950,7 +2950,7 @@ GameObject:
   - component: {fileID: 4809623474843239295}
   - component: {fileID: 4809623474843239293}
   - component: {fileID: 4809623474843239292}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemBox0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3031,7 +3031,9 @@ GameObject:
   - component: {fileID: 7956497328909543522}
   - component: {fileID: 4382717920101772811}
   - component: {fileID: 1113582420915935325}
-  m_Layer: 10
+  - component: {fileID: 1991389461}
+  - component: {fileID: 1991389462}
+  m_Layer: 6
   m_Name: PlayerBody
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3196,9 +3198,9 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 4891068077007680316, guid: 0137b5fb098d1b84f879ec23d7b02f8f,
     type: 3}
   _shootPoint: {fileID: 4809623474747644687}
-  _maxAmmo: 3
-  _movementSpeed: 10
-  _jumpForce: 10
+  _maxAmmo: 5
+  _movementSpeed: 3
+  _jumpForce: 5.5
 --- !u!50 &1113582420915935325
 Rigidbody2D:
   serializedVersion: 4
@@ -3211,15 +3213,42 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.03
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1991389461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4809623474848200462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904bfa1d0b7a86047bbd21599afb8950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ammoText: {fileID: 4809623474487442301}
+  _healthText: {fileID: 4809623473335180480}
+--- !u!114 &1991389462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4809623474848200462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d104f48c2bb84346a3d9998c3c4ef7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
 --- !u!1 &4809623474899774924
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,7 +3261,7 @@ GameObject:
   - component: {fileID: 4809623474899774928}
   - component: {fileID: 4809623474899774931}
   - component: {fileID: 4809623474899774930}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3334,7 +3363,7 @@ GameObject:
   - component: {fileID: 4809623474921748457}
   - component: {fileID: 4809623474921748463}
   - component: {fileID: 4809623474921748462}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemImage0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3407,7 +3436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623474944460739}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: EnemyStats0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3445,13 +3474,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4809623475010230902}
   - component: {fileID: 4809623475010230903}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4809623475010230902
 Transform:
   m_ObjectHideFlags: 0
@@ -3528,7 +3557,7 @@ GameObject:
   - component: {fileID: 4809623475059568240}
   - component: {fileID: 4809623475059568246}
   - component: {fileID: 4809623475059568241}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ArmorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3601,7 +3630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623475071661840}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: EnemyStats1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3640,7 +3669,7 @@ GameObject:
   - component: {fileID: 4809623475074406657}
   - component: {fileID: 4809623475074406663}
   - component: {fileID: 4809623475074406662}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: StatsBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3717,7 +3746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623475122804545}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: WaveStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3755,7 +3784,7 @@ GameObject:
   - component: {fileID: 4809623475201409239}
   - component: {fileID: 4809623475201409237}
   - component: {fileID: 4809623475201409236}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: HealthImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3828,7 +3857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623475202058793}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3869,7 +3898,7 @@ GameObject:
   - component: {fileID: 4809623475271530972}
   - component: {fileID: 4809623475271530978}
   - component: {fileID: 4809623475271530973}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemBox3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3945,7 +3974,7 @@ GameObject:
   - component: {fileID: 4809623475281440518}
   - component: {fileID: 4809623475281440516}
   - component: {fileID: 4809623475281440519}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ObjectiveAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4077,7 +4106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809623475331343610}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4093,7 +4122,7 @@ Transform:
   m_GameObject: {fileID: 4809623475331343605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4809623473368472078}
   - {fileID: 4809623474848200463}
@@ -4113,7 +4142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126393856384343678}
   - component: {fileID: 6681160009253679290}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ShootSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4240,7 +4269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5648085635128796446}
   - component: {fileID: 8375164333078554416}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ReloadSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
