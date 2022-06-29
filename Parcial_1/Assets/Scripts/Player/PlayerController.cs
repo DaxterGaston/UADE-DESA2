@@ -100,7 +100,7 @@ namespace Assets.Scripts.Player
             {
                 _playerHealth.Damage(1);
                 var bullet = other.GetComponent<BaseBullet>();
-                bullet.Store();
+                if (bullet != null) bullet.Store();
             } 
             if (other.gameObject.CompareTag("VictoryZone"))
             {

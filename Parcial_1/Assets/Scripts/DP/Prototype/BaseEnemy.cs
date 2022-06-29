@@ -4,6 +4,7 @@ using Assets.Scripts.DP.Factory;
 using System;
 using System.Diagnostics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.DP.Prototype
 {
@@ -44,6 +45,7 @@ namespace Assets.Scripts.DP.Prototype
 
         private IFactory<BaseBullet, BaseBulletSO> _baseBulletFactory;
         private IPool<BaseBullet> _baseBulletPool;
+        private Vector3 _scale;
 
         public bool IsDead => _dead;
         public event EnemyEventHandler OnDead;
@@ -72,6 +74,8 @@ namespace Assets.Scripts.DP.Prototype
             _sw = new Stopwatch();
             _ts = new TimeSpan(0, 0, 2);
             _sw.Start();
+            
+            _scale = transform.localScale;
         }
 
         // Update is called once per frame
@@ -83,19 +87,22 @@ namespace Assets.Scripts.DP.Prototype
             }
             Vector3 _canSee = transform.position;
             _canSee.x += _canSeePlayerRange;
-            RaycastHit2D seen = Physics2D.Raycast(transform.position, transform.right, _canSeePlayerRange, _player);
+            var seen = Physics2D.OverlapCircle(transform.position,  _canSeePlayerRange, _player);
             if (seen)
             {
-                if(seen.collider.transform.position.x > transform.position.x) _left = false;
+                if(seen.transform.position.x > transform.position.x) _left = false;
                 else _left = true;
-                RaycastHit2D onShootRange = Physics2D.Raycast(transform.position, transform.right, _canShootPlayerRange, _player);
+                RaycastHit2D onShootRange = Physics2D.Raycast(transform.position, _left ? -transform.right: transform.right, _canShootPlayerRange, _player);
                 if (onShootRange)
                 {
                     if(_sw.Elapsed > _ts)
                     {
-                    if (_left) _shootLeft.Execute();
-                    else _shootRight.Execute();
-                    _sw.Restart();
+                        if (Random.value >= 0.75f)
+                        {
+                            if (_left) _shootLeft.Execute();
+                            else _shootRight.Execute();
+                            _sw.Restart();    
+                        }
                     }
                 }
                 else
@@ -104,6 +111,12 @@ namespace Assets.Scripts.DP.Prototype
                     else _moveRight.Execute();
                 }
             }
+            if (_left)
+                _scale.x = Mathf.Abs(_scale.x) * -1;
+            else
+                _scale.x = Mathf.Abs(_scale.x);
+       
+            transform.localScale = _scale;
         }
 
         private void OnDrawGizmos()

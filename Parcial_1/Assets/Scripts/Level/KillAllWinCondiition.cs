@@ -34,7 +34,7 @@ public class KillAllWinCondiition : WinCondition
 
     public override void CheckWinCondition()
     {
-        if (_enemies != null && _enemies.Count > 0 && _enemies.All((enemy) => enemy.IsDead))
+        if (_enemies != null && ((_enemies.Count > 0 && _enemies.All((enemy) => enemy.IsDead)) || _enemies.Count == 0))
         {
             _winConditionMet = true;
             NotifyAll(LevelState.WinConditionMet);    
