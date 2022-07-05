@@ -29,10 +29,14 @@ namespace Assets.Scripts.Player
 
         [SerializeField]
         private float _jumpForce;
+
+        [SerializeField] 
+        private Animator _damageOverlayAnimator;
         
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
+        private readonly int START = Animator.StringToHash("Start");
         public event PlayerEventHandler OnPlayerDie;
         public bool Grounded { get; private set; }
         public bool Left { get; private set; }
@@ -99,6 +103,8 @@ namespace Assets.Scripts.Player
             if (other.gameObject.CompareTag("EnemyBullet"))
             {
                 _playerHealth.Damage(1);
+                CameraEffects.ShakeOnce(0.5f, 5, new Vector3(0.5f, 0.5f, 0));
+                _damageOverlayAnimator.SetTrigger(START);
                 var bullet = other.GetComponent<BaseBullet>();
                 if (bullet != null) bullet.Store();
             } 
@@ -136,6 +142,11 @@ namespace Assets.Scripts.Player
             {
                 if (Left) _shootLeft.Execute();
                 else _shootRight.Execute();
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _damageOverlayAnimator.SetTrigger(START);
             }
         }
     }

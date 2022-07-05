@@ -465,6 +465,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 158cf0e3d1d10364886a852c9de647bc, type: 3}
+--- !u!95 &1107549579 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4496857698820216895, guid: 0a74b0cc1cf79374e816060eef136ef1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2102767759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1160993618 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1206305035, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
@@ -667,6 +673,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelController
       objectReference: {fileID: 0}
+    - target: {fileID: 8427972906152522163, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8427972906318885673, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
         type: 3}
       propertyPath: _exitDoor
@@ -752,6 +763,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4382717920101772811, guid: 0a74b0cc1cf79374e816060eef136ef1,
+        type: 3}
+      propertyPath: _damageOverlayAnimator
+      value: 
+      objectReference: {fileID: 1107549579}
     - target: {fileID: 4809623473368472073, guid: 0a74b0cc1cf79374e816060eef136ef1,
         type: 3}
       propertyPath: m_IsActive

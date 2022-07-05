@@ -221,6 +221,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6087327033782950642, guid: 0a74b0cc1cf79374e816060eef136ef1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937603495885041114, guid: 0a74b0cc1cf79374e816060eef136ef1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181775260820669518, guid: 0a74b0cc1cf79374e816060eef136ef1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a74b0cc1cf79374e816060eef136ef1, type: 3}
 --- !u!50 &126718499 stripped
@@ -1145,6 +1160,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8427972904536922248, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8427972904746144605, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
         type: 3}
       propertyPath: m_RootOrder
@@ -1204,6 +1224,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelController
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427972906152522163, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8427972906318885673, guid: 2bcf8e5ba0cd8884ba959b587b36c311,
         type: 3}
