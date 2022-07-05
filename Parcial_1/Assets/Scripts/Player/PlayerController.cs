@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Assets.Scripts.DP.Commands;
 using Assets.Scripts.DP.Factory;
 using Assets.Scripts.Abstractions;
@@ -32,7 +33,10 @@ namespace Assets.Scripts.Player
 
         [SerializeField] 
         private Animator _damageOverlayAnimator;
-        
+
+        [SerializeField] private Transform _feetTopLeft;
+        [SerializeField] private Transform _feetBottomRight;
+        [SerializeField] private LayerMask _groundLayers;
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
@@ -95,7 +99,11 @@ namespace Assets.Scripts.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Ground")) Grounded = true;
+
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                Grounded = Physics2D.OverlapArea(_feetTopLeft.position, _feetBottomRight.position, _groundLayers);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -148,6 +156,13 @@ namespace Assets.Scripts.Player
             {
                 _damageOverlayAnimator.SetTrigger(START);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+
+            Gizmos.DrawLine(_feetBottomRight.position, _feetTopLeft.position);
         }
     }
 }

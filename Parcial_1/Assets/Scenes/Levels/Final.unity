@@ -132,6 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3690791429247385244, guid: 7b18a0afb5ce3ab4c9de5b6814fe5bc3,
         type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690791429247385244, guid: 7b18a0afb5ce3ab4c9de5b6814fe5bc3,
+        type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
@@ -139,6 +144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grid - FinalStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690791429617300912, guid: 7b18a0afb5ce3ab4c9de5b6814fe5bc3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3690791429617300912, guid: 7b18a0afb5ce3ab4c9de5b6814fe5bc3,
         type: 3}

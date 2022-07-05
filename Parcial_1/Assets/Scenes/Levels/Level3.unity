@@ -529,6 +529,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6082411025741447835, guid: c79536c871cf29148a814f1b9a60ca7d,
         type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082411025741447835, guid: c79536c871cf29148a814f1b9a60ca7d,
+        type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
