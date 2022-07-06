@@ -12,7 +12,6 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform crosshair;
-
     #endregion
 
     #region Variables
@@ -44,6 +43,7 @@ public class PlayerAnimationController : MonoBehaviour
     private void UpdateAnimations()
     {
         animator.SetBool("Walking", h != 0);
+        
         animator.SetFloat("X", h);
         if (_pc.Left)
             scale.x = Mathf.Abs(scale.x);

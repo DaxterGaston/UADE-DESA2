@@ -37,6 +37,8 @@ namespace Assets.Scripts.Player
         [SerializeField] private Transform _feetTopLeft;
         [SerializeField] private Transform _feetBottomRight;
         [SerializeField] private LayerMask _groundLayers;
+        [SerializeField] private AudioSource shootAudioSource;
+        [SerializeField] private AudioSource _walkingSound;
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
@@ -134,11 +136,13 @@ namespace Assets.Scripts.Player
             if (Input.GetKey(KeyCode.A))
             { 
                 _moveLeft.Execute();
+                if (!_walkingSound.isPlaying && Grounded) _walkingSound.Play();
                 Left = true;
             }
             if (Input.GetKey(KeyCode.D)) 
             {
                 _moveRight.Execute();
+                if (!_walkingSound.isPlaying && Grounded) _walkingSound.Play();
                 Left = false;
             }
             if (Input.GetKey(KeyCode.Space) && Grounded)
@@ -148,6 +152,7 @@ namespace Assets.Scripts.Player
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
+                shootAudioSource.Play();
                 if (Left) _shootLeft.Execute();
                 else _shootRight.Execute();
             }
