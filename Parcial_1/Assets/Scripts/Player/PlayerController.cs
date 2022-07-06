@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Assets.Scripts.DP.Commands;
 using Assets.Scripts.DP.Factory;
 using Assets.Scripts.Abstractions;
@@ -8,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
+    public delegate void PlayerEventHandler();
     public class PlayerController : MonoBehaviour
     {
         #region SetUp
@@ -28,11 +30,22 @@ namespace Assets.Scripts.Player
 
         [SerializeField]
         private float _jumpForce;
-        
+
+        [SerializeField] 
+        private Animator _damageOverlayAnimator;
+
+        [SerializeField] private Transform _feetTopLeft;
+        [SerializeField] private Transform _feetBottomRight;
+        [SerializeField] private LayerMask _groundLayers;
+        [SerializeField] private AudioSource shootAudioSource;
+        [SerializeField] private AudioSource _walkingSound;
+        [Range(0,10)][SerializeField] private float _extraGravity;
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
-
+        private readonly int START = Animator.StringToHash("Start");
+        private Rigidbody2D _rigidbody;
+        public event PlayerEventHandler OnPlayerDie;
         public bool Grounded { get; private set; }
         public bool Left { get; private set; }
 
@@ -41,6 +54,7 @@ namespace Assets.Scripts.Player
         private IPool<BaseBullet> _bullets;
         private HealthController _playerHealth;
         private GUIController _GUIObserver;
+        private bool _dead;
 
         #endregion
 
@@ -58,11 +72,14 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             _playerHealth = GetComponent<HealthController>();
-
+            _dead = false;
+            _rigidbody = GetComponent<Rigidbody2D>();
+            
+            
             //Move
             _moveLeft = new MoveCommand(transform, new Vector3(-1, 0), _movementSpeed);
             _moveRight = new MoveCommand(transform, new Vector3(1, 0), _movementSpeed);
-            _jump = new JumpCommand(GetComponent<Rigidbody2D>(), _jumpForce);
+            _jump = new JumpCommand(_rigidbody, _jumpForce);
             
             //Attack
             _bulletsFactory = new BulletFactory(_bulletPrefab);
@@ -81,14 +98,19 @@ namespace Assets.Scripts.Player
         // Update is called once per frame
         private void Update()
         {
-            if (_playerHealth.Health <= 0) SceneManager.LoadScene("SampleScene");
-            if (transform.position.y < -30) Die();
+            if (_playerHealth.Health <= 0 && !_dead) Die();
+            if (transform.position.y < -30 && !_dead) Die();
             ManageImputs();
+            _rigidbody.AddForce(Vector2.down * _extraGravity * Time.deltaTime);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnCollisionStay2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Ground")) Grounded = true;
+
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                Grounded = Physics2D.OverlapArea(_feetTopLeft.position, _feetBottomRight.position, _groundLayers);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -96,6 +118,10 @@ namespace Assets.Scripts.Player
             if (other.gameObject.CompareTag("EnemyBullet"))
             {
                 _playerHealth.Damage(1);
+                CameraEffects.ShakeOnce(0.5f, 5, new Vector3(0.5f, 0.5f, 0));
+                _damageOverlayAnimator.SetTrigger(START);
+                var bullet = other.GetComponent<BaseBullet>();
+                if (bullet != null) bullet.Store();
             } 
             if (other.gameObject.CompareTag("VictoryZone"))
             {
@@ -106,7 +132,8 @@ namespace Assets.Scripts.Player
 
         private void Die()
         {
-            SceneManager.LoadScene("SampleScene");
+            _dead = true;
+            OnPlayerDie?.Invoke();
         }
 
         private void ManageImputs()
@@ -114,11 +141,13 @@ namespace Assets.Scripts.Player
             if (Input.GetKey(KeyCode.A))
             { 
                 _moveLeft.Execute();
+                if (!_walkingSound.isPlaying && Grounded) _walkingSound.Play();
                 Left = true;
             }
             if (Input.GetKey(KeyCode.D)) 
             {
                 _moveRight.Execute();
+                if (!_walkingSound.isPlaying && Grounded) _walkingSound.Play();
                 Left = false;
             }
             if (Input.GetKey(KeyCode.Space) && Grounded)
@@ -128,9 +157,22 @@ namespace Assets.Scripts.Player
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
+                shootAudioSource.Play();
                 if (Left) _shootLeft.Execute();
                 else _shootRight.Execute();
             }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _damageOverlayAnimator.SetTrigger(START);
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+
+            Gizmos.DrawLine(_feetBottomRight.position, _feetTopLeft.position);
         }
     }
 }

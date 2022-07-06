@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/LoadScene.unity
     guid: fbe64082d856eca4fb02c963ef8e99fe
   - enabled: 1
-    path: Assets/Scenes/TestLevelAnimations.unity
-    guid: 205af3a68529a574294868bf15106932
+    path: Assets/Scenes/TutoLevels/TutoLevel1.unity
+    guid: 03dbaa20f2751b54694658ca867b74db
   - enabled: 1
-    path: Assets/Scenes/TestLevelTransitions.unity
-    guid: 0eb5f5e68a91bcb4a810a1d07fa525a7
+    path: Assets/Scenes/TutoLevels/TutoLevel2.unity
+    guid: b932199f64b21614da9abae6aa5432c2
+  - enabled: 1
+    path: Assets/Scenes/TutoLevels/TutoLevel3.unity
+    guid: 72be14babfcb6324a8979d1878f43e6a
+  - enabled: 1
+    path: Assets/Scenes/TutoLevels/TutoLevel4.unity
+    guid: c409c7827ed81464aa36e8f36683c790
+  - enabled: 1
+    path: Assets/Scenes/Levels/Final.unity
+    guid: 35265fc58df3dd54ba259d69f9afacbf
   m_configObjects: {}

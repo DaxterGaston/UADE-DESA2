@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3690791429247385245}
   - component: {fileID: 3690791429247385247}
   - component: {fileID: 3690791429247385246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1178,9 +1178,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3690791429617300914}
   - component: {fileID: 3690791429617300913}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grid - FinalStage
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

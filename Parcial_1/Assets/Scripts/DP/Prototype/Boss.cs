@@ -93,8 +93,6 @@ public class Boss : MonoBehaviour
             UpdateRotation();
             Shoot();
         }
-        
-        print("Left: " + _left);
     }
 
     private void Shoot()
