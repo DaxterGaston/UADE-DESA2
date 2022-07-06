@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Assets.Scripts.Abstractions;
-using Assets.Scripts.Bullets;
-using System.Linq;
+
 
 namespace Assets.Scripts.DP.Factory
 {
@@ -10,6 +9,7 @@ namespace Assets.Scripts.DP.Factory
     {
         private const string OBSERVER_MESSAGE = "AMMO_CHANGE";
         private List<T> inUse = new List<T>();
+        private List<T> _used = new List<T>();
         private List<T> available = new List<T>();
         private int _maxAmmount;
         public int IsAvailable => available.Count;
@@ -77,6 +77,21 @@ namespace Assets.Scripts.DP.Factory
         {
             foreach (var subscriber in _subscribers)
                 subscriber?.OnNotify(message, args);
+        }
+
+        public void StoreAsUsed(T item)
+        {
+            _used.Add(item);
+            item.gameObject.SetActive(false);
+            //item.enabled = false;
+            if (inUse.Contains(item)) //Si esta en la lista...
+                inUse.Remove(item); //Removelo
+            NotifyAll(OBSERVER_MESSAGE, (IsAvailable + "/" + _maxAmmount));
+        }
+
+        public void SetAllUsedAsAvailable()
+        { 
+            
         }
     }
 }
