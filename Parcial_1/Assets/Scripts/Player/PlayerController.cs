@@ -39,10 +39,12 @@ namespace Assets.Scripts.Player
         [SerializeField] private LayerMask _groundLayers;
         [SerializeField] private AudioSource shootAudioSource;
         [SerializeField] private AudioSource _walkingSound;
+        [Range(0,10)][SerializeField] private float _extraGravity;
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
         private readonly int START = Animator.StringToHash("Start");
+        private Rigidbody2D _rigidbody;
         public event PlayerEventHandler OnPlayerDie;
         public bool Grounded { get; private set; }
         public bool Left { get; private set; }
@@ -71,11 +73,13 @@ namespace Assets.Scripts.Player
         {
             _playerHealth = GetComponent<HealthController>();
             _dead = false;
+            _rigidbody = GetComponent<Rigidbody2D>();
+            
             
             //Move
             _moveLeft = new MoveCommand(transform, new Vector3(-1, 0), _movementSpeed);
             _moveRight = new MoveCommand(transform, new Vector3(1, 0), _movementSpeed);
-            _jump = new JumpCommand(GetComponent<Rigidbody2D>(), _jumpForce);
+            _jump = new JumpCommand(_rigidbody, _jumpForce);
             
             //Attack
             _bulletsFactory = new BulletFactory(_bulletPrefab);
@@ -97,9 +101,10 @@ namespace Assets.Scripts.Player
             if (_playerHealth.Health <= 0 && !_dead) Die();
             if (transform.position.y < -30 && !_dead) Die();
             ManageImputs();
+            _rigidbody.AddForce(Vector2.down * _extraGravity * Time.deltaTime);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnCollisionStay2D(Collision2D collision)
         {
 
             if (collision.gameObject.CompareTag("Ground"))

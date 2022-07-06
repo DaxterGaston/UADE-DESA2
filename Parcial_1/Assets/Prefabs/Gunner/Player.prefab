@@ -3467,6 +3467,7 @@ MonoBehaviour:
     m_Bits: 8
   shootAudioSource: {fileID: 6681160009253679290}
   _walkingSound: {fileID: 5926737531874548109}
+  _extraGravity: 10
 --- !u!50 &1113582420915935325
 Rigidbody2D:
   serializedVersion: 4

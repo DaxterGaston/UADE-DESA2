@@ -21,6 +21,7 @@ public class ShootCommand : ICommand
     {
         if(_bullets.IsAvailable > 0)
         {
+            CameraEffects.ShakeOnce(0.5f, 3, new Vector3(0.35f, 0.35f, 0));
             _bullets.GetInstance().GetComponent<BaseBullet>().SetBullet(_xDir, _bullets, _shootPoint);;
         }
     }

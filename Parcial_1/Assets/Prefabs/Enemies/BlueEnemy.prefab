@@ -204,8 +204,8 @@ MonoBehaviour:
   _shootPoint: {fileID: 8766650576621631260}
   _bulletPrefab: {fileID: -5119759457265773228, guid: 6f5172ae8031fd84985bf63802f394f5,
     type: 3}
-  _canSeePlayerRange: 2.2
-  _canShootPlayerRange: 1.3
+  _canSeePlayerRange: 3
+  _canShootPlayerRange: 2.5
   _player:
     serializedVersion: 2
     m_Bits: 64
