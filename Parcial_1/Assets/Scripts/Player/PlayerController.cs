@@ -39,7 +39,11 @@ namespace Assets.Scripts.Player
         [SerializeField] private LayerMask _groundLayers;
         [SerializeField] private AudioSource shootAudioSource;
         [SerializeField] private AudioSource _walkingSound;
+        [SerializeField] private AudioSource _reloadSound;
         [Range(0,10)][SerializeField] private float _extraGravity;
+
+        [SerializeField] private TextMeshProUGUI _reloadText;
+        
         #endregion
 
         private IFactory<BaseBullet, BaseBulletSO> _bulletsFactory;
@@ -48,6 +52,8 @@ namespace Assets.Scripts.Player
         public event PlayerEventHandler OnPlayerDie;
         public bool Grounded { get; private set; }
         public bool Left { get; private set; }
+
+        private bool _redColor = false;
 
         #region Observer
 
@@ -91,6 +97,9 @@ namespace Assets.Scripts.Player
             _GUIObserver = GetComponent<GUIController>();
             _playerHealth.Subscribe(_GUIObserver);
             ((BulletPool<BaseBullet, BaseBulletSO>)_bullets).Subscribe(_GUIObserver);
+
+
+            InvokeRepeating("ReloadText", 0, 0.5f);
         }
 
         #endregion
@@ -102,6 +111,7 @@ namespace Assets.Scripts.Player
             if (transform.position.y < -30 && !_dead) Die();
             ManageImputs();
             _rigidbody.AddForce(Vector2.down * _extraGravity * Time.deltaTime);
+            if (_bullets.CanSetUsedAsAvailable) _reloadText.text = "Reload (R)";
         }
 
         private void OnCollisionStay2D(Collision2D collision)
@@ -157,14 +167,44 @@ namespace Assets.Scripts.Player
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                shootAudioSource.Play();
-                if (Left) _shootLeft.Execute();
-                else _shootRight.Execute();
+                if (_bullets.IsAvailable > 0)
+                { 
+                    shootAudioSource.Play();
+                    if (Left) _shootLeft.Execute();
+                    else _shootRight.Execute();
+                }
             }
-
             if (Input.GetKeyDown(KeyCode.P))
             {
                 _damageOverlayAnimator.SetTrigger(START);
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (_bullets.CanSetUsedAsAvailable)
+                {
+                    _reloadSound.Play();
+                    Invoke("Reload", 1);
+                }
+            }
+        }
+
+        private void Reload()
+        {
+            _bullets.SetAllUsedAsAvailable();
+            _reloadText.text = "";
+        }
+
+        private void ReloadText()
+        {
+            if (_redColor)
+            {
+                _reloadText.color = Color.white;
+                _redColor = false;
+            }
+            else
+            {
+                _reloadText.color = Color.red;
+                _redColor = true;
             }
         }
 

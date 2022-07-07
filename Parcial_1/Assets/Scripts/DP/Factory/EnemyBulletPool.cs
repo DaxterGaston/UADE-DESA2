@@ -14,6 +14,9 @@ namespace Assets.Scripts.DP.Factory
         public int MaxAmmount => _maxAmmount;
 
         public List<IObserver> Subscribers => _subscribers;
+
+        public bool CanSetUsedAsAvailable => false;
+
         private List<IObserver> _subscribers = new List<IObserver>();
 
         public EnemyBulletPool(IFactory<T, S> factory, int maxAmmount)
@@ -54,6 +57,11 @@ namespace Assets.Scripts.DP.Factory
             List<T> list = new List<T>();
             list.AddRange(inUse);
             return list;
+        }
+
+        public void SetAllUsedAsAvailable()
+        {
+            
         }
     }
 }

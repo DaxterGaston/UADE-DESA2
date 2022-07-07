@@ -16,6 +16,9 @@ namespace Assets.Scripts.DP.Factory
         public int MaxAmmount => _maxAmmount;
 
         public List<IObserver> Subscribers => _subscribers;
+
+        public bool CanSetUsedAsAvailable => _used.Count == _maxAmmount;
+
         private List<IObserver> _subscribers = new List<IObserver>();
 
         public BulletPool(IFactory<T, S> factory, int maxAmmount)
@@ -25,6 +28,7 @@ namespace Assets.Scripts.DP.Factory
             foreach (var item in bullets)
             {
                 Store(item);
+                SetAllUsedAsAvailable();
             }
         }
 
@@ -45,7 +49,7 @@ namespace Assets.Scripts.DP.Factory
 
         public void Store(T item)
         {
-            available.Add(item);
+            _used.Add(item);
             item.gameObject.SetActive(false);
             //item.enabled = false;
             if (inUse.Contains(item)) //Si esta en la lista...
@@ -79,19 +83,15 @@ namespace Assets.Scripts.DP.Factory
                 subscriber?.OnNotify(message, args);
         }
 
-        public void StoreAsUsed(T item)
-        {
-            _used.Add(item);
-            item.gameObject.SetActive(false);
-            //item.enabled = false;
-            if (inUse.Contains(item)) //Si esta en la lista...
-                inUse.Remove(item); //Removelo
-            NotifyAll(OBSERVER_MESSAGE, (IsAvailable + "/" + _maxAmmount));
-        }
-
         public void SetAllUsedAsAvailable()
-        { 
-            
+        {
+            if (_used.Count == _maxAmmount) 
+            {
+                for (int i = 0; i < _used.Count; i++) 
+                    available.Add(_used[i]);
+                _used.Clear();
+                NotifyAll(OBSERVER_MESSAGE, (IsAvailable + "/" + _maxAmmount));
+            }
         }
     }
 }
